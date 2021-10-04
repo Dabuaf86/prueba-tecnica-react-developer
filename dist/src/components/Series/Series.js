@@ -6,6 +6,7 @@ import '../Cards.css';
 import Modal from '../Modal/Modal';
 import ModalCard from '../ModalCard/ModalCard';
 import Pagination from '../Pagination/Pagination';
+import ClassToggle from '../../helpers/ClassToggle';
 
 const Series = () => {
 	const [isOpened, setIsOpened] = useState(false);
@@ -39,6 +40,7 @@ const Series = () => {
 				currentItems.map((el, i) => (
 					<div
 						onClick={() => {
+							ClassToggle('body', 'modalShown');
 							setIsOpened(true);
 							setCurrentCard({
 								...currentCard,
