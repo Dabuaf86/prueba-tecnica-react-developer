@@ -1,0 +1,21 @@
+.card-continer {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	padding-top: 1rem;
+	justify-content: center;
+	flex-flow: column wrap;
+	gap: 1rem;
+}
+
+.card-content:hover {
+	opacity: 70%;
+	cursor: pointer;
+	border: 1px solid white;
+}
+
+.pagination-cont {
+	width: 100%;
+	display: grid;
+	align-content: center;
+	grid-column: 1 / -1;
+}

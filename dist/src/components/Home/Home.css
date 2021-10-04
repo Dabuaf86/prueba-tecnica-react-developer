@@ -1,0 +1,22 @@
+.card-container {
+	display: flex;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+}
+
+.card-title {
+    position: relative;
+}
+
+.card-img {
+	background-color: black;
+    width: 170px;
+    height: 150px;
+}
+
+.card-subtitle {
+    font-size: small;
+}
