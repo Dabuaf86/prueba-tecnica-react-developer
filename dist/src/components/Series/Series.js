@@ -7,6 +7,7 @@ import Modal from '../Modal/Modal';
 import ModalCard from '../ModalCard/ModalCard';
 import Pagination from '../Pagination/Pagination';
 import ClassToggle from '../../helpers/ClassToggle';
+import Loader from '../Loader/Loader';
 
 const Series = () => {
 	const [isOpened, setIsOpened] = useState(false);
@@ -36,7 +37,10 @@ const Series = () => {
 
 	return (
 		<div className='card-container'>
-			{currentItems &&
+			{currentItems < 1 ? (
+				<Loader />
+			) : (
+				currentItems &&
 				currentItems.map((el, i) => (
 					<div
 						onClick={() => {
@@ -57,7 +61,8 @@ const Series = () => {
 							image={el.images['Poster Art']['url']}
 						/>
 					</div>
-				))}
+				))
+			)}
 			{isOpened && (
 				<Modal isOpened={isOpened} setIsOpened={setIsOpened}>
 					<ModalCard currentCard={currentCard} />
