@@ -6,6 +6,7 @@ import '../Cards.css';
 import Modal from '../Modal/Modal';
 import ModalCard from '../ModalCard/ModalCard';
 import Pagination from '../Pagination/Pagination';
+import ClassToggle from '../../helpers/ClassToggle';
 
 const Movies = () => {
 	const [isOpened, setIsOpened] = useState(false);
@@ -18,6 +19,7 @@ const Movies = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const movies = useSelector(state => state.movies);
+	const moviesLength = useSelector(state => state.moviesLength);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -33,11 +35,13 @@ const Movies = () => {
 	const paginate = num => setCurrentPage(num);
 
 	return (
-		<div className='card-continer'>
+		<div className='card-container'>
 			{currentItems &&
 				currentItems.map((el, i) => (
 					<div
+						className='card'
 						onClick={() => {
+							ClassToggle('body', 'modalShown');
 							setIsOpened(true);
 							setCurrentCard({
 								...currentCard,
@@ -62,9 +66,10 @@ const Movies = () => {
 			)}
 			<div className='pagination-cont'>
 				<Pagination
-					totalItems={currentItems.length}
+					totalItems={moviesLength}
 					itemsPerPage={itemsPerPage}
 					paginate={paginate}
+					currentPage={currentPage}
 				/>
 			</div>
 		</div>

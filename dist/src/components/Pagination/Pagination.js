@@ -1,8 +1,14 @@
 import './Pagination.css';
 
-const Pagination = ({ totalItems, itemsPerPage, paginate }) => {
+const Pagination = ({
+	totalItems,
+	itemsPerPage = 20,
+	paginate,
+	currentPage,
+}) => {
 	const pages = [];
-	for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+	const rounded = Math.ceil(totalItems / itemsPerPage);
+	for (let i = 1; i <= rounded; i++) {
 		pages.push(i);
 	}
 
@@ -18,27 +24,18 @@ const Pagination = ({ totalItems, itemsPerPage, paginate }) => {
 
 	return (
 		<div className='page-container'>
-			{/* <ul className='pageNumbers'> */}
-			{/* <button>◀ Prev</button> */}
-			<a href='#' className='pageNumbers'>
-				◀ Prev
-			</a>
+			<button disabled>◀ Prev</button>
 			{pages &&
 				pages.map(num => (
-					<a
+					<button
 						key={num}
-						className='pageNumbers'
+						className={`pageNumbers ${num === currentPage ? 'active' : ''}`}
 						onClick={() => paginate(num)}
-						href='#'
 					>
 						{num}
-					</a>
+					</button>
 				))}
-			<a href='#' className='pageNumbers'>
-				Sig ▶
-			</a>
-			{/* <button>Sig ▶</button> */}
-			{/* </ul> */}
+			<button disabled>Sig ▶</button>
 		</div>
 	);
 };

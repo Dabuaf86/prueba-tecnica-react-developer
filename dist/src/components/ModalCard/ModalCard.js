@@ -6,7 +6,7 @@ const ModalCard = ({ currentCard }) => {
 	return (
 		<div className='modal-children'>
 			<div className='modal-poster'>
-				<img src={image} alt={title} width='300px' />
+				<img src={image} alt={title} />
 			</div>
 			<div className='modal-details'>
 				<h3 className='modal-title'>{title}</h3>

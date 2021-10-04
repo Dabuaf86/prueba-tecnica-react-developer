@@ -1,10 +1,11 @@
-.card-continer {
+.card-container {
 	display: grid;
 	grid-template-columns: repeat(5, minmax(0, 1fr));
 	padding-top: 1rem;
 	justify-content: center;
 	flex-flow: column wrap;
 	gap: 1rem;
+	/* pointer-events: none; */
 }
 
 .card-content:hover {

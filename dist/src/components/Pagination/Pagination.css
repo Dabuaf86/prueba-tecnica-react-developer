@@ -1,16 +1,17 @@
 .page-container {
 	display: flex;
 	justify-content: center;
-	padding-top: 10px;
+	padding: 10px 0;
 	width: 100vw;
 }
 
 .pageNumbers {
-    display: flex;
-    flex-direction: row;
-    /* align-self: center; */
-	list-style: none;
 	display: flex;
-    color: black;
-    padding: 0 1rem 1rem 0;
+	flex-direction: row;
+	display: flex;
+	padding: 0 0.75rem;
+}
+
+.pageNumbers.active {
+	font-weight: bold;
 }

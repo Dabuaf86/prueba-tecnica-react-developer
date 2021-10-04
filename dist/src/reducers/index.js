@@ -8,6 +8,8 @@ import {
 const initialState = {
 	movies: [],
 	series: [],
+	moviesLength: 0,
+	seriesLength: 0,
 	// movieDetails: {},
 	// seriesDetails: {},
 };
@@ -18,11 +20,13 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				movies: action.payload,
+				moviesLength: action.payload.length,
 			};
 		case GET_SERIES:
 			return {
 				...state,
 				series: action.payload,
+				seriesLength: action.payload.length,
 			};
 		// case GET_MOVIE_DETAILS:
 		// 	return {

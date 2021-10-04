@@ -18,6 +18,7 @@ const Series = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const series = useSelector(state => state.series);
+	const seriesLength = useSelector(state => state.seriesLength);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -33,7 +34,7 @@ const Series = () => {
 	const paginate = num => setCurrentPage(num);
 
 	return (
-		<div className='card-continer'>
+		<div className='card-container'>
 			{currentItems &&
 				currentItems.map((el, i) => (
 					<div
@@ -62,9 +63,10 @@ const Series = () => {
 			)}
 			<div className='pagination-cont'>
 				<Pagination
-					totalItems={currentItems.length}
+					totalItems={seriesLength}
 					itemsPerPage={itemsPerPage}
 					paginate={paginate}
+					currentPage={currentPage}
 				/>
 			</div>
 		</div>

@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.modalShown {
+  overflow: hidden;
+}
+
+.modalShown.card {
+  pointer-events: none;
+}
