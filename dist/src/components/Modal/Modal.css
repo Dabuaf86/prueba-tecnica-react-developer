@@ -21,10 +21,11 @@
 }
 
 .modal-box button {
-	background-color: hsl(0, 0%, 100%);
+	background-color: rgba(245, 189, 189, 0.85);
 	border-radius: 50%;
 	height: 35px;
 	width: 35px;
+	font-weight: bold;
 }
 
 .modal-content {

@@ -1,6 +1,6 @@
 .footer {
 	background-color: black;
-	position: absolute;
+	position: relative;
 	width: 100%;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
@@ -8,6 +8,8 @@
 	flex-direction: column;
 	align-content: center;
 	font-size: small;
+	bottom: 0%;
+	/* margin-top: 11%; */
 }
 
 .foot-div {

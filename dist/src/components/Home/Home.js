@@ -2,6 +2,7 @@
 import { NavLink } from 'react-router-dom';
 import './Home.css';
 import png from '../../assets/placeholder.png';
+import '../Cards.css';
 
 const Home = () => {
 	return (

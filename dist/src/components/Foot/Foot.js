@@ -11,29 +11,17 @@ const Foot = () => {
 	return (
 		<footer className='footer'>
 			<div className='foot-div'>
-				<a className='foot-nav' href='/'>
-					Home
-				</a>
+				<button className='foot-nav'> Home</button>
 				<hr />
-				<a className='foot-nav' href='#'>
-					Terms and Conditions
-				</a>
+				<button className='foot-nav'> Terms and Conditions</button>
 				<hr />
-				<a className='foot-nav' href='#'>
-					Privacy Policy
-				</a>
+				<button className='foot-nav'> Privacy Policy</button>
 				<hr />
-				<a className='foot-nav' href='#'>
-					Collection Statement
-				</a>
+				<button className='foot-nav'> Collection Statement</button>
 				<hr />
-				<a className='foot-nav' href='#'>
-					Help
-				</a>
+				<button className='foot-nav'> Help</button>
 				<hr />
-				<a className='foot-nav' href='#'>
-					Manage Account
-				</a>
+				<button className='foot-nav'> Manage Account</button>
 			</div>
 			<div className='copyright-cont'>
 				<p>Copyright © 2016 DEMO Streaming. All Rights Reserved.</p>

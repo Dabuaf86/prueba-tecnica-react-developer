@@ -1,7 +1,7 @@
 import ClassToggle from '../../helpers/ClassToggle';
 import './Modal.css';
 
-const Modal = ({ isOpened, setIsOpened, children }) => {
+const Modal = ({ setIsOpened, children }) => {
 	return (
 		<div className='modal-container'>
 			<div className='modal-box'>
@@ -11,7 +11,7 @@ const Modal = ({ isOpened, setIsOpened, children }) => {
 						setIsOpened(false);
 					}}
 				>
-					❌
+					✖
 				</button>
 				<div className='modal-content'>{children}</div>
 			</div>
