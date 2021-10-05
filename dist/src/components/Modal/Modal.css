@@ -21,11 +21,16 @@
 }
 
 .modal-box button {
-	background-color: rgba(245, 189, 189, 0.85);
+	background-color: rgba(245, 189, 189, 0.9);
 	border-radius: 50%;
 	height: 35px;
 	width: 35px;
 	font-weight: bold;
+}
+
+.modal-box button:hover {
+	opacity: 70%;
+	color: white;
 }
 
 .modal-content {
@@ -62,4 +67,9 @@
 
 .modal-description {
 	justify-items: center;
+	font-style: italic;
+}
+
+.modal-year {
+	font-weight: bold;
 }

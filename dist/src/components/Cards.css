@@ -5,7 +5,23 @@
 	justify-content: center;
 	flex-flow: column wrap;
 	gap: 1rem;
-	/* pointer-events: none; */
+}
+
+.card-content {
+	/* height: fit-content; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.card-content p {
+	width: 200px;
+	font-weight: bold;
+}
+
+.card-content img {
+	width: 200px;
+	border-radius: 15px;
 }
 
 .card-content:hover {
@@ -19,4 +35,5 @@
 	display: grid;
 	align-content: center;
 	grid-column: 1 / -1;
+	margin-top: 1rem;
 }

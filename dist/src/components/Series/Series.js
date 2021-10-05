@@ -7,17 +7,27 @@ import Modal from '../Modal/Modal';
 import ModalCard from '../ModalCard/ModalCard';
 import Pagination from '../Pagination/Pagination';
 import ClassToggle from '../../helpers/ClassToggle';
+import PageList from '../../helpers/PageList';
 import Loader from '../Loader/Loader';
 
+const initialState = {
+	isOpened: false,
+	currentCard: { title: '', image: '', description: '', released: '' },
+	currentPage: 1,
+	maxPageNumber: 5,
+	minPageNumber: 0,
+};
+
 const Series = () => {
-	const [isOpened, setIsOpened] = useState(false);
-	const [currentCard, setCurrentCard] = useState({
-		title: '',
-		image: '',
-		description: '',
-		released: '',
-	});
-	const [currentPage, setCurrentPage] = useState(1);
+	const [isOpened, setIsOpened] = useState(initialState.isOpened);
+	const [currentCard, setCurrentCard] = useState(initialState.currentCard);
+	const [currentPage, setCurrentPage] = useState(initialState.currentPage);
+	const [maxPageNumber, setMaxPageNumber] = useState(
+		initialState.maxPageNumber
+	);
+	const [minPageNumber, setMinPageNumber] = useState(
+		initialState.minPageNumber
+	);
 
 	const series = useSelector(state => state.series);
 	const seriesLength = useSelector(state => state.seriesLength);
@@ -25,15 +35,42 @@ const Series = () => {
 
 	useEffect(() => {
 		dispatch(getSeries());
-		// console.log('LAS SERIES: ', series);
 	}, []);
 
+	const pageNumberLimit = 5;
 	const itemsPerPage = 20;
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 	const currentItems = series.slice(indexOfFirstItem, indexOfLastItem);
 
-	const paginate = num => setCurrentPage(num);
+	const pages = PageList(seriesLength, itemsPerPage);
+
+	const paginate = e => {
+		if (typeof e === 'number') setCurrentPage(e);
+		else if (e === 'prev' && currentPage !== 1) {
+			setCurrentPage(currentPage - 1);
+			if ((currentPage - 1) % pageNumberLimit === 0) {
+				setMaxPageNumber(maxPageNumber - pageNumberLimit);
+				setMinPageNumber(minPageNumber - pageNumberLimit);
+			}
+		} else if (e === 'next' && currentPage <= pages.length - 1) {
+			setCurrentPage(currentPage + 1);
+			if (currentPage + 1 > maxPageNumber) {
+				setMaxPageNumber(maxPageNumber + pageNumberLimit);
+				setMinPageNumber(minPageNumber + pageNumberLimit);
+			}
+		} else if (e === 'first') {
+			setCurrentPage(1);
+			setMaxPageNumber(initialState.maxPageNumber);
+			setMinPageNumber(initialState.minPageNumber);
+		} else if (e === 'last') {
+			setCurrentPage(pages.length);
+			if (currentPage + 1 > maxPageNumber) {
+				setMaxPageNumber(maxPageNumber + pageNumberLimit);
+				setMinPageNumber(minPageNumber + pageNumberLimit);
+			}
+		}
+	};
 
 	return (
 		<div className='card-container'>
@@ -74,6 +111,8 @@ const Series = () => {
 					itemsPerPage={itemsPerPage}
 					paginate={paginate}
 					currentPage={currentPage}
+					maxPageNumber={maxPageNumber}
+					minPageNumber={minPageNumber}
 				/>
 			</div>
 		</div>

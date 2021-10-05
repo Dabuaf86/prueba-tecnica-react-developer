@@ -1,3 +1,4 @@
+import PageList from '../../helpers/PageList';
 import './Pagination.css';
 
 const Pagination = ({
@@ -5,37 +6,44 @@ const Pagination = ({
 	itemsPerPage = 20,
 	paginate,
 	currentPage,
+	maxPageNumber,
+	minPageNumber,
 }) => {
-	const pages = [];
-	const rounded = Math.ceil(totalItems / itemsPerPage);
-	for (let i = 1; i <= rounded; i++) {
-		pages.push(i);
-	}
+	const pages = PageList(totalItems, itemsPerPage);
 
-	// const handleClick = e => {
-	// 	setCurrentPage(Number(e.target.id));
-	// };
+	const handleClick = e => {
+		paginate(e.target.name);
+	};
 
-	// const renderPageNumbers = pages.map(number => (
-	// 	<li key={number} id={number} onClick={handleClick}>
-	// 		{number}
-	// 	</li>
-	// ));
+	const renderPageNumbers = pages.map(pageNum => {
+		if (pageNum > minPageNumber && pageNum < maxPageNumber + 1)
+			return (
+				<li
+					key={pageNum}
+					className={`pageNumbers ${pageNum === currentPage ? 'active' : ''}`}
+					onClick={() => paginate(pageNum)}
+				>
+					{pageNum}
+				</li>
+			);
+		else return null;
+	});
 
 	return (
 		<div className='page-container'>
-			<button disabled>◀ Prev</button>
-			{pages &&
-				pages.map(num => (
-					<button
-						key={num}
-						className={`pageNumbers ${num === currentPage ? 'active' : ''}`}
-						onClick={() => paginate(num)}
-					>
-						{num}
-					</button>
-				))}
-			<button disabled>Sig ▶</button>
+			<button className='pageNumbers' name='prev' onClick={handleClick}>
+				◀
+			</button>
+			<button className='pageNumbers' name='first' onClick={handleClick}>
+				◀◀
+			</button>
+			{renderPageNumbers}
+			<button className='pageNumbers' name='last' onClick={handleClick}>
+				▶▶
+			</button>
+			<button className='pageNumbers' name='next' onClick={handleClick}>
+				▶
+			</button>
 		</div>
 	);
 };

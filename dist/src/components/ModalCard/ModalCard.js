@@ -1,5 +1,3 @@
-// import '../ModalCard.css';
-
 const ModalCard = ({ currentCard }) => {
 	const { title, image, description, released } = currentCard;
 
