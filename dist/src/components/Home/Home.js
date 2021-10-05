@@ -2,22 +2,21 @@
 import { NavLink } from 'react-router-dom';
 import './Home.css';
 import png from '../../assets/placeholder.png';
-import '../Cards.css';
 
 const Home = () => {
 	return (
-		<div className='card-container'>
+		<div className='home-container'>
 			<div className='card'>
-				<h2 className='card-title'>MOVIES</h2>
 				<NavLink to='/pelis' className='card-link'>
-					<img className='card-img' src={png} alt='poster' />
+					<h2>MOVIES</h2>
+					<img src={png} alt='poster' />
 				</NavLink>
 				<p className='card-subtitle'>Popular Movies</p>
 			</div>
 			<div className='card'>
-				<h2 className='card-title'>SERIES</h2>
 				<NavLink to='/series' className='card-link'>
-					<img className='card-img' src={png} alt='poster' />
+					<h2>SERIES</h2>
+					<img src={png} alt='poster' />
 				</NavLink>
 				<p className='card-subtitle'>Popular Series</p>
 			</div>
